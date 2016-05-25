@@ -6,10 +6,9 @@
     "url": ""
   },
   "scripts": {
-    "start": "nodemon app.js --exec babel-node --presets es2015,stage-0",
-    "test": "mocha --reporter spec --timeout 5000 --compilers js:babel-register",
-    "build": "babel lib -d dist",
-    "serve": "node app.js"
+    "start": "node app.js",
+    "watch": "nodemon app.js",
+    "test": "mocha --reporter spec --timeout 5000"
   },
   "author": "Yanis Ikene",
   "dependencies": {
@@ -23,11 +22,6 @@
     "validator": "^4.5.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.4.5",
-    "babel-core": "^6.4.5",
-    "babel-preset-es2015": "^6.3.13",
-    "babel-preset-stage-0": "^6.3.13",
-    "babel-register": "^6.4.3",
     "chai": "^3.4.1",
     "mocha": "^2.3.4",
     "nodemon": "^1.8.1",

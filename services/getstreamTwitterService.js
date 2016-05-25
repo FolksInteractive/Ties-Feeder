@@ -1,11 +1,13 @@
-import * as getstreamFeedManager from './getstreamFeedManager';
+'use strict';
+
+const getstreamFeedManager = require( './getstreamFeedManager');
 const timelineFeed = getstreamFeedManager.getTimelineFeed();
 
 
 /**
  *	Transforms a tweet into a getstream activity
  */
-export function transformTweetToActivity(tweet) {
+exports.transformTweetToActivity = function(tweet) {
     let tweetActivity = {
             actor: tweet.user__screen_name,
             verb: 'post',
@@ -26,6 +28,6 @@ export function transformTweetToActivity(tweet) {
  * Send the tweet activity to getstream timeline feed
  * @return returns a Promise object
  */
-export function sendTweetActivityToGetstream(tweetActivity) {
+exports.sendTweetActivityToGetstream = function(tweetActivity) {
 	return timelineFeed.addActivity(tweetActivity);
 }

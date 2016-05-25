@@ -1,11 +1,13 @@
-import * as getstreamFeedManager from './getstreamFeedManager';
+'use strict';
+
+const getstreamFeedManager = require('./getstreamFeedManager');
 const timelineFeed = getstreamFeedManager.getTimelineFeed();
 
 
 /**
  *	Transforms an Instagram post into a getstream activity
  */
-export function transformInstagramPostToActivity(post) {
+exports.transformInstagramPostToActivity = function(post) {
     let postActivity = {
             actor: post.user.username,
             verb: 'post',
@@ -26,6 +28,6 @@ export function transformInstagramPostToActivity(post) {
  * Send the post activity to getstream timeline feed
  * @return returns a Promise object
  */
-export function sendPostActivityToGetstream(postActivity) {
+exports.sendPostActivityToGetstream = function(postActivity) {
 	return timelineFeed.addActivity(postActivity);
 }

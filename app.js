@@ -1,16 +1,18 @@
+'use strict';
+
 /**
  * Module dependencies.
  */
-import express from 'express';
-import bodyParser from 'body-parser';
-import logger from 'morgan';
-import dotenv from 'dotenv';
-import path from 'path';
-import expressValidator from 'express-validator';
+const express = require('express');
+const bodyParser = require('body-parser');
+const logger = require('morgan');
+const dotenv = require('dotenv');
+const path = require('path');
+const expressValidator = require('express-validator');
 
 
 /**
- * Load environment variables from .env file, where API keys and passwords are configured.
+ * Load environment variables = require( .env file, where API keys and passwords are configured.
  *
  * Default path: .env
  */
@@ -19,18 +21,18 @@ dotenv.load({ path: '.env' });
 /**
  * Controllers (route handlers).
  */
-import * as zapierTwitterController from './controllers/zapierTwitterController';
-import * as zapierInstagramController from './controllers/zapierInstagramController';
+const zapierTwitterController = require('./controllers/zapierTwitterController');
+const zapierInstagramController = require('./controllers/zapierInstagramController');
 
 /**
  * Validators
  */
-import * as validators from './controllers/validators';
+const validators = require('./controllers/validators');
 
 /**
  * API keys and Passport configuration.
  */
-import * as auth from './config/auth';
+const auth = require('./config/auth');
 
 /**
  * Create Express server.
@@ -65,4 +67,4 @@ app.listen(app.get('port'), function() {
   console.log('Express server listening on port %d in %s mode', app.get('port'), app.get('env'));
 });
 
-export default app;
+exports.app = app;

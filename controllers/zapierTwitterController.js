@@ -1,10 +1,12 @@
-import * as getstreamTwitterService from '../services/getstreamTwitterService';
+'use strict';
+
+const getstreamTwitterService = require('../services/getstreamTwitterService');
 
 /**
  * POST /webhooks/zapier/twitter
  * Transforms the tweet then send it to getstream
  */
-export function webhook(req, res, next) {
+exports.webhook = function(req, res, next) {
     let tweetActivity = getstreamTwitterService.transformTweetToActivity(req.body);
     getstreamTwitterService.sendTweetActivityToGetstream(tweetActivity)
       .then(() => res.status(200).send())

@@ -1,9 +1,11 @@
-import * as getstreamInstagramService from '../services/getstreamInstagramService';
+'use strict';
+
+const getstreamInstagramService = require('../services/getstreamInstagramService');
 
 /**
  * POST /webhooks/zapier/instagram
  */
-export function webhook(req, res, next) {
+exports.webhook = function(req, res, next) {
   let postActivity = getstreamInstagramService.transformInstagramPostToActivity(req.body);
   getstreamInstagramService.sendPostActivityToGetstream(postActivity)
     .then(() => res.status(200).send())

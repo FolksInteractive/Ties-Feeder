@@ -1,9 +1,11 @@
-import util from 'util';
+'use strict';
+
+const util = require('util');
 
 /**
  * Validate the tweet object coming from Zapier
  */
-export function validateTweet(req, res, next) {
+exports.validateTweet = function(req, res, next) {
     req.checkBody('user__name', 'twitter username missing').notEmpty();
     req.checkBody('text', 'tweet text missing').notEmpty();
     req.checkBody('url', 'tweet url missing').notEmpty();
@@ -19,7 +21,7 @@ export function validateTweet(req, res, next) {
     next();
 }
 
-export function validateInstagramPost(req, res, next) {
+exports.validateInstagramPost = function(req, res, next) {
     req.checkBody('images.standard_resolution.url', 'image url missing').notEmpty();
     req.checkBody('user', 'user infos missing').notEmpty();
     req.checkBody('link', 'post url missing').notEmpty();
